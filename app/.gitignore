@@ -1,5 +1,4 @@
 # Nuxt dev/build outputs
-.output
 .data
 .nuxt
 .nitro
@@ -105,7 +104,6 @@ Temporary Items
 dist
 .nuxt
 .nuxt-*
-.output
 .gen
 
 # Node dependencies
