@@ -1,0 +1,4 @@
+const e = "*{box-sizing:border-box}body{margin:0;padding:0}#__nuxt{min-height:100vh}.page-enter-active,.page-leave-active{transition:all .3s ease}.page-enter-from,.page-leave-to{opacity:0;transform:translateY(10px)}.layout-enter-active,.layout-leave-active{transition:all .2s ease}.layout-enter-from,.layout-leave-to{opacity:0}";
+
+export { e };
+//# sourceMappingURL=entry-styles-4.mjs-BrnLYzCz.mjs.map

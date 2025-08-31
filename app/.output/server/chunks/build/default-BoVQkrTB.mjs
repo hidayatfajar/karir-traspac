@@ -1,0 +1,73 @@
+import N from './HeaderPublic-BB0VCnCi.mjs';
+import { o as o$1 } from './Container-mCQntVpP.mjs';
+import m$1 from './FooterPublic-CPfiW6Oc.mjs';
+import { s as pm, v as Wt } from './server.mjs';
+import { o } from './_plugin-vue_export-helper-BCo6x5W8.mjs';
+import './useLocale-DRieL7bI.mjs';
+import '../_/nitro.mjs';
+import 'crypto-es';
+import 'node:http';
+import 'node:https';
+import 'node:events';
+import 'node:buffer';
+import 'node:fs';
+import 'node:url';
+import '@iconify/utils';
+import 'node:crypto';
+import 'consola';
+import 'node:path';
+import './usePortal-B0EwXMSu.mjs';
+import './useForwardPropsEmits-nQnKVeqj.mjs';
+import './DialogPortal-DWaqTrjw.mjs';
+import './utils-6y4URocx.mjs';
+import './getActiveElement-CxMYnBFR.mjs';
+import './Presence-D-YonBfP.mjs';
+import './ConfigProvider-BpvNyuo1.mjs';
+import './useBodyScrollLock-DClI9ev0.mjs';
+import './VisuallyHidden-CudQpOEQ.mjs';
+import './Card-DDyQTkQA.mjs';
+import './logo-kt-C_l9s7Hp.mjs';
+import 'node:zlib';
+import 'node:stream';
+import 'node:util';
+import 'node:net';
+import 'util';
+import 'stream';
+import 'path';
+import 'http';
+import 'https';
+import 'url';
+import 'fs';
+import 'crypto';
+import 'assert';
+import 'tty';
+import 'node:process';
+import 'node:os';
+import 'node:tty';
+import 'zlib';
+import 'events';
+import '../routes/renderer.mjs';
+import 'vue-bundle-renderer/runtime';
+import 'vue/server-renderer';
+import 'unhead/server';
+import 'devalue';
+import 'unhead/plugins';
+import 'unhead/utils';
+import 'vue';
+
+const p = {};
+const m = p.setup;
+p.setup = (t2, o2) => {
+  const r2 = Wt.useSSRContext();
+  return (r2.modules || (r2.modules = /* @__PURE__ */ new Set())).add("layouts/default.vue"), m ? m(t2, o2) : void 0;
+};
+const d = o(p, [["ssrRender", function(i2, p2, m2, d2) {
+  const n = N, a = o$1, l = m$1;
+  p2(`<div${pm.ssrRenderAttrs(d2)}><div class="bg-[##EEF5F9] min-h-dvh">`), p2(pm.ssrRenderComponent(n, null, null, m2)), p2(pm.ssrRenderComponent(a, { ui: { base: "mx-auto", padding: "sm:px-0 lg:px-0 xl:px-0 md:px-0 px-0", constrained: "max-w-7xl" } }, { default: Wt.withCtx((t2, o2, r2, p3) => {
+    if (!o2) return [Wt.renderSlot(i2.$slots, "default")];
+    pm.ssrRenderSlot(i2.$slots, "default", {}, null, o2, r2, p3);
+  }), _: 3 }, m2)), p2(pm.ssrRenderComponent(l, null, null, m2)), p2("</div></div>");
+}]]);
+
+export { d as default };
+//# sourceMappingURL=default-BoVQkrTB.mjs.map

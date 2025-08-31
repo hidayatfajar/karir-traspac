@@ -1,0 +1,1 @@
+import{i as r}from"./D8G5jBss.js";import{e as o,c as t}from"./UvJT4o6g.js";function i(i){const l=r({dir:o("ltr")});return t(()=>{var r;return(null==i?void 0:i.value)||(null==(r=l.dir)?void 0:r.value)||"ltr"})}export{i as u};

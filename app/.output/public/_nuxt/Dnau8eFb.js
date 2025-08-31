@@ -1,0 +1,1 @@
+import{h as e}from"./DnCr5V3S.js";import{e as n,c as t}from"./UvJT4o6g.js";function l(){const l=n(),r=t(()=>{var n,t;return["#text","#comment"].includes(null==(n=l.value)?void 0:n.$el.nodeName)?null==(t=l.value)?void 0:t.$el.nextElementSibling:e(l)});return{primitiveElement:l,currentElement:r}}export{l as u};

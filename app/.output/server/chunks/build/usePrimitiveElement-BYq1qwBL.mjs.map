@@ -1,0 +1,1 @@
+{"version":3,"file":"usePrimitiveElement-BYq1qwBL.mjs","sources":["../../../../node_modules/reka-ui/dist/Primitive/usePrimitiveElement.js"],"sourcesContent":null,"names":["usePrimitiveElement","primitiveElement","ref","currentElement","computed","r","n","includes","_a","value","$el","nodeName","_b","nextElementSibling","unrefElement"],"mappings":"","x_google_ignoreList":[0]}
