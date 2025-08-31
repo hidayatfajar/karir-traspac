@@ -1,0 +1,6 @@
+{
+  "watch": ["src", "app.js"],
+  "ext": "js,json",
+  "ignore": ["sessions/*"],
+  "exec": "node app.js"
+}
