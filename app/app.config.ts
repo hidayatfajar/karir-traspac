@@ -112,5 +112,12 @@ export default defineAppConfig({
         loadingAnimation: "carousel",
       },
     },
+    button: {
+      slots: {
+        base: [
+          "cursor-pointer disabled:cursor-not-allowed aria-disabled:cursor-not-allowed disabled:opacity-75 aria-disabled:opacity-75",
+        ],
+      },
+    },
   },
 });

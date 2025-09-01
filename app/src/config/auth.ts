@@ -41,6 +41,8 @@ export const publicPages = [
   // Chrome DevTools dan browser requests
   "/.well-known/appspecific/com.chrome.devtools.json",
   "/favicon.ico",
+  "/faq",
+  "/faq/:id",
 ];
 
 /**

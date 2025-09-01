@@ -4,7 +4,7 @@
       <!-- Hero Section -->
       <section
         id="hero"
-        class="relative px-4  md:px-8 lg:px-16 xl:px-40 py-12 sm:py-16 md:py-20 lg:py-[56px] bg-slate-50"
+        class="relative px-4 md:px-8 lg:px-16 xl:px-40 py-12 sm:py-16 md:py-20 lg:py-[56px] bg-slate-50"
       >
         <div
           class="absolute -top-32 -left-32 w-64 h-64 rounded-full bg-primary-500 blur-2xl opacity-50"
@@ -53,7 +53,7 @@
           <div class="hidden md:block mt-8 md:mt-0">
             <img
               class="w-full rounded-lg"
-              src="https://storage.googleapis.com/uxpilot-auth.appspot.com/c6667673b9-05d9b3aee6af7abcf6d0.png"
+              src="https://kyyjdpebklyiaolvxrjj.supabase.co/storage/v1/object/public/storage-public/bg-hero.png"
               alt="Tim teknologi yang beragam sedang bekerja bersama"
               onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e7ff/4338ca?text=Inovasi'"
             />
@@ -62,74 +62,124 @@
       </section>
 
       <!-- Jobs Section -->
-      <section
-        id="jobs"
-        class="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-40 py-12 sm:py-16 md:py-20 lg:py-[86px] bg-white"
-      >
-        <div class="container mx-auto px-6">
-          <h2
-            class="text-2xl sm:text-3xl font-bold tracking-tight mb-8 md:mb-12 text-center"
-          >
-            Lowongan Tersedia
-          </h2>
-          <div
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
-          >
-            <div
-              v-for="job in jobListings"
-              :key="job.id"
-              class="group relative bg-white rounded-xl border border-slate-200 hover:shadow-2xl hover:border-primary-300 transition-all duration-300 transform hover:-translate-y-2"
-            >
-              <div class="p-6">
-                <div class="flex items-center mb-4">
-                  <UAvatar
-                    :icon="job.icon"
-                    size="lg"
-                    class="bg-primary-50 text-primary"
+      <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <h3 class="text-3xl font-bold text-primary mb-4">
+              Lowongan Tersedia
+            </h3>
+            <p class="text-gray-600">
+              Temukan posisi yang sesuai dengan passion dan keahlian Anda
+            </p>
+          </div>
+          <div class="bg-white rounded-2xl shadow-lg p-8 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div class="md:col-span-2">
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >Cari Posisi</label
+                >
+                <div class="relative">
+                  <TextField
+                    size="xl"
+                    placeholder="Masukkan nama posisi atau kata kunci..."
+                    type="search"
+                    class="w-full"
+                    icon="i-heroicons-magnifying-glass-20-solid"
                   />
-                  <div class="ml-4">
-                    <h3 class="text-lg font-semibold text-gray-900">
-                      {{ job.title }}
-                    </h3>
-                    <p class="text-sm text-gray-500">{{ job.company }}</p>
-                  </div>
-                </div>
-                <div class="flex flex-wrap gap-2 mb-4">
-                  <UBadge
-                    v-for="tag in job.tags"
-                    :key="tag"
-                    :label="tag"
-                    size="sm"
-                    variant="subtle"
-                  />
-                </div>
-                <p class="text-gray-600 text-sm mb-4 line-clamp-2">
-                  {{ job.description[0] }}
-                </p>
-                <div class="flex justify-between items-center text-sm">
-                  <span class="text-gray-500 flex items-center"
-                    ><UIcon name="i-mdi-map-marker-outline" class="mr-1" />{{
-                      job.location
-                    }}</span
-                  >
-                  <span class="text-primary font-medium">{{ job.salary }}</span>
                 </div>
               </div>
-              <div class="border-t border-slate-200 p-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2"
+                  >Filter</label
+                >
+                <div class="relative">
+                  <USelectMenu
+                    placeholder="Pilih Tipe"
+                    :options="[
+                      'Semua Tipe',
+                      'Full-time',
+                      'Part-time',
+                      'Remote',
+                      'Contract',
+                    ]"
+                    size="xl"
+                    class="w-full"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="mt-6 flex justify-center">
+              <UButton
+                label="Cari Lowongan"
+                color="primary"
+                size="xl"
+                icon="i-heroicons-magnifying-glass-20-solid"
+                class="bg-primary text-white px-8 py-3 rounded-xl font-medium hover:bg-opacity-90 transition-all"
+              />
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div
+              v-for="lowongan in listLowongan.slice(0, 3)"
+              :key="lowongan.id"
+              class="bg-white w-full rounded-2xl shadow-lg hover:shadow-xl transition-all p-6 border border-gray-100"
+            >
+              <div class="flex items-start justify-between mb-4">
+                <div
+                  class="w-12 h-12 bg-primary/15 rounded-xl flex items-center justify-center"
+                >
+                  <UIcon class="text-primary" :name="lowongan.icon" />
+                </div>
+                <span
+                  class="px-3 py-1 rounded-full text-xs font-medium"
+                  :class="lowongan.typeColor"
+                  >{{ lowongan.type }}</span
+                >
+              </div>
+              <h4 class="text-xl font-bold text-gray-900 mb-2">
+                {{ lowongan.title }}
+              </h4>
+              <div class="flex items-center text-gray-500 mb-4">
+                <UIcon class="mr-2" name="fa6-solid:location-dot" />
+                <span>{{ lowongan.location }}</span>
+              </div>
+              <p class="text-gray-600 mb-6 line-clamp-3">
+                {{ lowongan.description }}
+              </p>
+              <div class="flex items-center gap-4">
                 <UButton
                   label="Lihat Detail"
-                  @click="$router.push(`/lowongan/${job.id}`)"
-                  block
-                  variant="soft"
+                  class="rounded-xl w-full justify-center"
+                  color="primary"
+                  size="xl"
+                  @click="navigateTo('lowongan/' + lowongan.id)"
+                />
+                <div class="h-10 w-px bg-gray-200" />
+                <UButton
+                  icon="i-heroicons-share-20-solid"
+                  class="rounded-xl"
+                  color="primary"
+                  size="xl"
                 />
               </div>
             </div>
+          </div>
+          <div class="mt-8 text-right">
+            <UButton
+              label="Lihat Semua Lowongan"
+              class="rounded-xl w-fit justify-center"
+              color="primary"
+              variant="outline"
+              size="xl"
+              trailing-icon="i-heroicons-arrow-right-20-solid"
+              @click="navigateTo('lowongan')"
+            />
           </div>
         </div>
       </section>
 
       <!-- Recruitment Process -->
-      <section id="process" class="py-20 bg-white">
+      <section id="process" class="py-20 bg-primary/15">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center mb-16" data-aos="fade-up">
             <h2 class="text-3xl font-bold text-gray-900 mb-4">
@@ -341,61 +391,6 @@
         </div>
       </section>
 
-      <!-- Career Path Section -->
-      <!-- <section
-          id="career"
-          class="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-40 py-12 sm:py-16 md:py-20 lg:py-[86px] relative overflow-hidden bg-white"
-        >
-          <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-12 md:mb-16">
-              <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
-                Jenjang Karir
-              </h2>
-              <p class="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base">
-                Temukan jalur karir yang sesuai dengan minat dan kemampuan Anda.
-              </p>
-            </div>
-            <div
-              class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 md:gap-12 xl:gap-8"
-            >
-              <div
-                v-for="(path, index) in careerPaths"
-                :key="path.title"
-                class="relative"
-              >
-                <div
-                  :class="[
-                    'absolute -inset-4 rounded-xl opacity-20 transform',
-                    path.bg,
-                    path.rotation.bg,
-                  ]"
-                ></div>
-                <div
-                  :class="[
-                    'relative bg-white p-6 md:p-8 rounded-xl border-2 border-dotted transition duration-300 transform hover:rotate-0',
-                    path.border,
-                    path.rotation.card,
-                  ]"
-                >
-                  <div
-                    class="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 flex items-center justify-center text-white text-xl sm:text-2xl mb-4 md:mb-6"
-                  >
-                    <UIcon :name="path.icon" class="text-2xl sm:text-3xl" />
-                  </div>
-                  <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-3">
-                    {{ path.title }}
-                  </h3>
-                  <ul class="space-y-2 text-gray-600 text-sm sm:text-base">
-                    <li v-for="level in path.levels" :key="level">
-                      {{ level }}
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section> -->
-
       <!-- Testimonials Section -->
       <section
         id="testimonials"
@@ -448,26 +443,6 @@
         id="stats"
         class="px-4 sm:px-6 md:px-8 lg:px-16 xl:px-40 py-12 sm:py-16 md:py-20 lg:py-[86px] bg-slate-800 relative overflow-hidden"
       >
-        <!-- Decorative Circles -->
-        <div
-          class="absolute -top-20 -left-20 w-40 h-40 rounded-full bg-blue-500/20 blur-xl"
-        ></div>
-        <div
-          class="absolute top-20 -right-10 w-32 h-32 rounded-full bg-green-400/15 blur-lg"
-        ></div>
-        <div
-          class="absolute -bottom-16 left-1/4 w-48 h-48 rounded-full bg-amber-400/10 blur-2xl"
-        ></div>
-        <div
-          class="absolute bottom-10 right-1/3 w-24 h-24 rounded-full bg-emerald-400/20 blur-md"
-        ></div>
-        <div
-          class="absolute top-1/2 left-10 w-16 h-16 rounded-full bg-blue-400/25 blur-sm"
-        ></div>
-        <div
-          class="absolute top-1/3 right-10 w-20 h-20 rounded-full bg-purple-400/15 blur-lg"
-        ></div>
-
         <!-- Grid pattern overlay -->
         <div
           class="absolute inset-0 opacity-5"
@@ -576,38 +551,64 @@
               Pertanyaan Umum
             </h2>
             <p class="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base">
-              Temukan jawaban atas pertanyaan yang sering diajukan.
+              Temukan jawaban untuk pertanyaan yang sering diajukan seputar
+              karir dan proses rekrutmen di Karir Traspac.
             </p>
           </div>
-          <UAccordion :items="faqItems" class="max-w-3xl mx-auto space-y-4">
-            <!-- <template #default="{ item, open }">
-                <UButton
-                  color="neutral"
-                  variant="ghost"
-                  class="border border-slate-200 hover:bg-slate-50 rounded-xl shadow-sm w-full text-left p-4 md:p-6"
-                >
-                  <span
-                    class="text-base sm:text-lg font-medium text-gray-900"
-                    >{{ item.label }}</span
-                  >
-                  <template #trailing>
-                    <UIcon
-                      :name="open ? 'i-mdi-minus' : 'i-mdi-plus'"
-                      class="w-5 h-5 ms-auto transform transition-transform duration-200 text-primary"
-                    />
-                  </template>
-                </UButton>
-              </template> -->
-          </UAccordion>
         </div>
+        <section id="faq-list" class="py-8">
+          <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="space-y-4">
+              <div
+                v-for="faq in listFaq.slice(0, 5)"
+                :key="faq.id"
+                class="faq-item bg-white rounded-2xl shadow-lg border border-gray-100"
+              >
+                <UButton
+                  variant="ghost"
+                  class="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-gray-50"
+                  @click="toggleFaq(faq.id)"
+                >
+                  <h3 class="text-lg font-semibold text-gray-900 pr-4">
+                    {{ faq.question }}
+                  </h3>
+                  <UIcon
+                    :name="
+                      expandedFaqs.includes(faq.id)
+                        ? 'i-heroicons-minus'
+                        : 'i-heroicons-plus'
+                    "
+                    class="text-primary text-xl transition-transform duration-300"
+                    :class="{ 'rotate-180': expandedFaqs.includes(faq.id) }"
+                  />
+                </UButton>
+                <Transition
+                  enter-active-class="transition-all duration-300 ease-out"
+                  enter-from-class="max-h-0 opacity-0"
+                  enter-to-class="max-h-96 opacity-100"
+                  leave-active-class="transition-all duration-300 ease-in"
+                  leave-from-class="max-h-96 opacity-100"
+                  leave-to-class="max-h-0 opacity-0"
+                >
+                  <div
+                    v-if="expandedFaqs.includes(faq.id)"
+                    class="px-8 pb-6 overflow-hidden"
+                  >
+                    <p class="text-gray-600 leading-relaxed">
+                      {{ faq.answer }}
+                    </p>
+                  </div>
+                </Transition>
+              </div>
+            </div>
+          </div>
+        </section>
       </section>
     </main>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-
 definePageMeta({
   title: "Beranda",
   name: "Beranda",
@@ -621,6 +622,16 @@ definePageMeta({
     { name: "keywords", content: "karir, pekerjaan, lowongan, traspac" },
   ],
 });
+
+const expandedFaqs = ref<number[]>([]);
+const toggleFaq = (id: number) => {
+  const index = expandedFaqs.value.indexOf(id);
+  if (index > -1) {
+    expandedFaqs.value.splice(index, 1);
+  } else {
+    expandedFaqs.value.push(id);
+  }
+};
 
 const router = useRouter();
 const isMobileMenuOpen = ref(false);
@@ -641,105 +652,68 @@ const navLinks = [
   { label: "FAQ", to: "#faq" },
 ];
 
-// Data dummy untuk lowongan
-const jobListings = [
+const listLowongan = ref([
   {
     id: 1,
     title: "Frontend Developer",
-    company: "TechCorp Inc.",
-    icon: "i-mdi-code-braces",
-    tags: ["Full-time", "Remote", "JavaScript", "React"],
-    description: [
-      "Kami mencari Frontend Developer berpengalaman untuk mengembangkan aplikasi web modern menggunakan React.js.",
-      "Anda akan bertanggung jawab untuk membangun antarmuka pengguna yang responsif dan interaktif, bekerja sama dengan tim desain untuk menerapkan mockup, dan berkolaborasi dengan tim backend untuk mengintegrasikan API.",
-    ],
-    requirements: [
-      "Pengalaman minimal 2 tahun sebagai Frontend Developer",
-      "Mahir dalam HTML, CSS, dan JavaScript (ES6+)",
-      "Pengalaman kuat dengan React.js dan ekosistemnya",
-      "Familiar dengan konsep RESTful API",
-    ],
+    description:
+      "Bergabung dengan tim development untuk mengembangkan aplikasi web modern menggunakan React, Vue.js, dan teknologi frontend terdepan.",
     location: "Jakarta, Indonesia",
-    salary: "Rp 12-18jt",
+    type: "Full-time",
+    typeColor: "bg-green-100 text-green-800",
+    icon: "fa6-solid:code",
   },
   {
     id: 2,
-    title: "Backend Engineer",
-    company: "DataSystems Ltd.",
-    icon: "i-mdi-server",
-    tags: ["Full-time", "On-site", "Node.js", "MongoDB"],
-    description: [
-      "Bergabunglah sebagai Backend Engineer untuk membangun dan mengoptimalkan API dan layanan mikro kami.",
-      "Anda akan merancang dan mengimplementasikan solusi backend yang skalabel, mengoptimalkan kinerja database, dan memastikan keamanan sistem kami.",
-    ],
-    requirements: [
-      "Pengalaman minimal 3 tahun dalam pengembangan backend",
-      "Mahir dalam Node.js dan Express.js",
-      "Pengalaman dengan database NoSQL (MongoDB) dan SQL",
-      "Memahami arsitektur mikroservis",
-    ],
-    location: "Bandung, Indonesia",
-    salary: "Rp 15-20jt",
+    title: "Backend Developer",
+    description:
+      "Kembangkan sistem backend yang scalable menggunakan Node.js, Python, atau Java untuk mendukung aplikasi dengan jutaan pengguna.",
+    location: "Remote / Jakarta",
+    type: "Remote",
+    typeColor: "bg-blue-100 text-blue-800",
+    icon: "fa6-solid:server",
   },
   {
     id: 3,
     title: "UI/UX Designer",
-    company: "CreativeMinds",
-    icon: "i-mdi-palette-outline",
-    tags: ["Contract", "Hybrid", "Figma"],
-    description: [
-      "Kami mencari desainer berbakat untuk menciptakan pengalaman pengguna yang luar biasa untuk produk digital kami.",
-      "Anda akan bertanggung jawab untuk merancang antarmuka pengguna yang intuitif dan estetis, melakukan penelitian pengguna, dan membuat prototipe.",
-    ],
-    requirements: [
-      "Portofolio yang menunjukkan keterampilan desain UI/UX yang kuat",
-      "Mahir dalam alat desain seperti Figma, Adobe XD, atau Sketch",
-      "Memahami prinsip-prinsip UX dan metodologi penelitian pengguna",
-    ],
+    description:
+      "Ciptakan pengalaman pengguna yang luar biasa melalui desain interface yang intuitif dan menarik untuk produk digital kami.",
+    location: "Bandung, Indonesia",
+    type: "Full-time",
+    typeColor: "bg-green-100 text-green-800",
+    icon: "fa6-solid:palette",
+  },
+  {
+    id: 4,
+    title: "Data Analyst",
+    description:
+      "Analisis data untuk memberikan insights bisnis yang valuable menggunakan Python, SQL, dan tools visualisasi data modern.",
+    location: "Jakarta, Indonesia",
+    type: "Part-time",
+    typeColor: "bg-orange-100 text-orange-800",
+    icon: "fa6-solid:chart-line",
+  },
+  {
+    id: 5,
+    title: "Mobile Developer",
+    description:
+      "Kembangkan aplikasi mobile native dan cross-platform menggunakan Flutter, React Native, atau teknologi mobile terbaru.",
     location: "Surabaya, Indonesia",
-    salary: "Rp 10-15jt",
-  },
-];
-
-// Data untuk Jenjang Karir
-const careerPaths = [
-  {
-    title: "Teknologi",
-    icon: "i-mdi-code-tags",
-    levels: [
-      "Junior Developer",
-      "Mid-level Developer",
-      "Senior Developer",
-      "Tech Lead",
-      "CTO",
-    ],
-    bg: "bg-indigo-100",
-    border: "border-indigo-200",
-    rotation: { bg: "rotate-3", card: "-rotate-1" },
+    type: "Full-time",
+    typeColor: "bg-green-100 text-green-800",
+    icon: "fa6-solid:mobile-screen-button",
   },
   {
-    title: "Bisnis",
-    icon: "i-mdi-chart-line",
-    levels: ["Staff", "Supervisor", "Manager", "Director", "VP"],
-    bg: "bg-purple-100",
-    border: "border-purple-200",
-    rotation: { bg: "-rotate-3", card: "rotate-1" },
+    id: 6,
+    title: "Product Manager",
+    description:
+      "Lead product development dari konsep hingga eksekusi, bekerja sama dengan tim engineering dan design untuk menciptakan produk yang luar biasa.",
+    location: "Remote / Jakarta",
+    type: "Remote",
+    typeColor: "bg-blue-100 text-blue-800",
+    icon: "fa6-solid:users",
   },
-  {
-    title: "Kreatif",
-    icon: "i-mdi-palette-swatch-outline",
-    levels: [
-      "Junior Designer",
-      "Designer",
-      "Senior Designer",
-      "Art Director",
-      "Creative Director",
-    ],
-    bg: "bg-blue-100",
-    border: "border-blue-200",
-    rotation: { bg: "rotate-3", card: "-rotate-1" },
-  },
-];
+]);
 
 // Data dummy untuk about us
 const aboutUs = [
@@ -802,28 +776,66 @@ const testimonials = [
 ];
 
 // Data untuk FAQ
-const faqItems = [
+const listFaq = ref([
   {
-    label: "Bagaimana cara mendaftar di Karir Traspac?",
-    content:
-      'Anda bisa mendaftar dengan mengklik tombol "Daftar" di bagian atas halaman, kemudian mengisi formulir pendaftaran dengan data diri yang valid. Setelah itu, Anda akan menerima email verifikasi untuk mengaktifkan akun.',
+    id: 1,
+    category: "application",
+    question:
+      "Bagaimana cara melamar pekerjaan di PT. Traspac Makmur Sejahtera?",
+    answer:
+      "Anda dapat melamar pekerjaan melalui halaman karir kami dengan mengklik tombol 'Lamar Sekarang' pada posisi yang diminati. Pastikan untuk melengkapi profil dan mengunggah CV terbaru Anda. Tim HR kami akan meninjau aplikasi Anda dalam 3-5 hari kerja.",
   },
   {
-    label: "Apakah ada biaya untuk menggunakan platform ini?",
-    content:
-      "Platform ini sepenuhnya gratis untuk pencari kerja. Kami tidak memungut biaya apapun untuk melihat lowongan, melamar pekerjaan, atau menggunakan fitur-fitur lainnya.",
+    id: 2,
+    category: "application",
+    question: "Dokumen apa saja yang diperlukan untuk melamar?",
+    answer:
+      "Dokumen yang diperlukan meliputi CV terbaru, surat lamaran, portfolio (untuk posisi teknis/kreatif), dan sertifikat relevan. Pastikan semua dokumen dalam format PDF dengan ukuran maksimal 5MB per file.",
   },
   {
-    label: "Bagaimana cara melamar pekerjaan?",
-    content:
-      'Setelah menemukan lowongan yang sesuai, klik tombol "Lihat Detail" yang akan mengarahkan Anda ke halaman detail pekerjaan. Di sana Anda dapat mengikuti instruksi untuk melamar.',
+    id: 3,
+    category: "interview",
+    question: "Seperti apa proses interview di PT. Traspac Makmur Sejahtera?",
+    answer:
+      "Proses interview terdiri dari 3 tahap: screening awal via telepon/video call, technical interview dengan tim teknis, dan final interview dengan hiring manager. Setiap tahap berlangsung 45-60 menit dengan fokus pada kemampuan teknis dan cultural fit.",
   },
   {
-    label: "Apakah data pribadi saya aman?",
-    content:
-      "Kami sangat serius dalam menjaga keamanan dan privasi data pengguna. Semua informasi pribadi Anda dilindungi dan hanya akan dibagikan kepada perusahaan setelah Anda menyetujui untuk melamar pekerjaan tertentu.",
+    id: 4,
+    category: "interview",
+    question: "Berapa lama proses rekrutmen berlangsung?",
+    answer:
+      "Proses rekrutmen biasanya memakan waktu 2-3 minggu dari aplikasi hingga keputusan akhir. Kami akan memberikan update status aplikasi Anda di setiap tahap proses melalui email.",
   },
-];
+  {
+    id: 5,
+    category: "benefits",
+    question: "Apa saja benefit yang ditawarkan PT. Traspac Makmur Sejahtera?",
+    answer:
+      "Kami menawarkan paket benefit komprehensif termasuk asuransi kesehatan, tunjangan makan, flexible working hours, work from home policy, annual leave 12 hari, training & development budget, dan bonus performa tahunan.",
+  },
+  {
+    id: 6,
+    category: "benefits",
+    question: "Apakah ada program training dan development?",
+    answer:
+      "Ya, kami menyediakan budget training Rp 10 juta per tahun untuk setiap karyawan, akses ke platform learning online, mentoring program, dan kesempatan menghadiri konferensi teknologi nasional maupun internasional.",
+  },
+  {
+    id: 7,
+    category: "career",
+    question: "Bagaimana jenjang karir di PT. Traspac Makmur Sejahtera?",
+    answer:
+      "Kami memiliki clear career path untuk setiap posisi dengan review performa setiap 6 bulan. Promosi berdasarkan merit dengan kesempatan advancement ke posisi senior, lead, manager, hingga director level sesuai dengan performa dan kontribusi.",
+  },
+  {
+    id: 8,
+    category: "career",
+    question:
+      "Apakah fresh graduate bisa melamar di PT. Traspac Makmur Sejahtera?",
+    answer:
+      "Tentu saja! Kami memiliki program Graduate Trainee khusus untuk fresh graduate dengan mentoring intensif selama 6 bulan pertama. Kami mencari kandidat dengan passion tinggi, kemampuan belajar cepat, dan mindset growth.",
+  },
+]);
 
 // Fungsi navigasi
 const navigateTo = (path: string) => {
