@@ -16,6 +16,7 @@ import 'node:events';
 import '@iconify/utils';
 import 'node:crypto';
 import 'consola';
+import 'node:module';
 import 'util';
 import 'stream';
 import 'path';
