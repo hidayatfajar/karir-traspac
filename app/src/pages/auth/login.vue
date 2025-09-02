@@ -135,6 +135,18 @@
             >
           </p>
         </div>
+        
+        <!-- Demo Credentials Hint -->
+        <div class="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+          <p class="text-sm font-medium text-blue-900 mb-2">🎭 Demo Mode - Quick Login:</p>
+          <div class="text-xs text-blue-700 space-y-1">
+            <p><strong>Admin:</strong> admin@traspac.co.id / admin123</p>
+            <p><strong>HR:</strong> hr@traspac.co.id / hr123</p>
+            <p><strong>Interviewer:</strong> interviewer1@traspac.co.id / interviewer123</p>
+            <p><strong>Pelamar:</strong> pelamar1@gmail.com / pelamar123</p>
+          </div>
+          <p class="text-xs text-blue-600 mt-2">Atau gunakan Demo Login Panel di pojok kanan bawah</p>
+        </div>
       </div>
 
       <div
@@ -196,30 +208,40 @@ const loading = ref({
 const validasiLogin: () => void = async () => {
   loading.value.simpan = true;
 
-  const { status, message, data } = await store.login({
-    username: form.value.username as string,
-    password: form.value.password,
-    is_remember: form.value.is_remember as boolean,
-  });
+  try {
+    const { status, message, data } = await store.login({
+      email: form.value.username as string, // menggunakan email
+      password: form.value.password,
+      is_remember: form.value.is_remember as boolean,
+    });
 
-  if (status) {
-    alert.value = {
-      show: true,
-      message: "Berhasil login",
-      error: false,
-    };
-    setTimeout(() => {
-      toPortalMenu(data?.user_group_id);
+    if (status) {
+      alert.value = {
+        show: true,
+        message: "Berhasil login",
+        error: false,
+      };
+      setTimeout(() => {
+        toPortalMenu(data?.user_group_id);
+        loading.value.simpan = false;
+      }, 2000);
+    } else {
+      alert.value = {
+        show: true,
+        message: message,
+        error: true,
+      };
       loading.value.simpan = false;
-    }, 2000);
-  } else {
+    }
+  } catch (error) {
     alert.value = {
       show: true,
-      message: message,
+      message: error.message || "Login gagal",
       error: true,
     };
     loading.value.simpan = false;
   }
+  
   setTimeout(() => {
     alert.value = {
       show: false,
