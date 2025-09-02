@@ -10,8 +10,8 @@
           class="h-[45px] w-[45px] -intro-x !z-10"
           height="45"
           width="45"
-          src="@/assets/images/logo/logo-tni-al.png"
-          alt="logo-tni-ad"
+          src="@/assets/images/logo/logo.png"
+          alt="logo-kt"
         />
         <ClientOnly>
           <div class="items-center flex gap-x-4 intro-x !z-20">
@@ -21,10 +21,10 @@
               <div class="flex items-center justify-center !z-10">
                 <div class="leading-3">
                   <div class="italic font-semibold text-TERSIER capitalize">
-                    {{ root.user?.nama ?? "-" }}
+                    {{ root.user?.nama ?? "Fajar Hidayat" }}
                   </div>
                   <div class="text-right text-sm text-919191 mt-0.5 capitalize">
-                    {{ root.user?.nama_user_group ?? "-" }}
+                    {{ root.user?.nama_user_group ?? "Admin" }}
                   </div>
                 </div>
                 <UAvatar
@@ -159,7 +159,7 @@
       <div class="mx-auto max-w-7xl">
         <div class="text-center -intro-y mt-4 !z-10">
           <h1 class="text-center text-[50px] font-bold gradient-text">
-            Digital Class Course
+            Karir Traspac
           </h1>
         </div>
         <div v-if="loadingMenu" class="z-10 py-16">
@@ -254,7 +254,7 @@
         ></div>
       </div>
     </div>
-    <img
+    <!-- <img
       @drag.prevent
       @click.right.prevent
       @click.prevent
@@ -263,7 +263,7 @@
       class="w-full bottom-0 left-0 right-0 fixed object-cover z-0 bg-CONTAINER intro-y"
       alt="background-portal"
       loading="lazy"
-    />
+    /> -->
   </div>
 </template>
 
@@ -553,7 +553,7 @@ const ubahKataSandiUser = async () => {
 // lifecycle start
 onBeforeMount(async () => {
   loading.value = false;
-  await refreshHakAksesModul();
+  // await refreshHakAksesModul();
 });
 // lifecycle end
 </script>
