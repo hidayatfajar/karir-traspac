@@ -601,6 +601,17 @@
                 </Transition>
               </div>
             </div>
+            <div class="mt-8 text-right">
+              <UButton
+                label="Lihat Semua FAQ"
+                class="rounded-xl w-fit justify-center"
+                color="primary"
+                variant="outline"
+                size="xl"
+                trailing-icon="i-heroicons-arrow-right-20-solid"
+                @click="navigateTo('/faq')"
+              />
+            </div>
           </div>
         </section>
       </section>
