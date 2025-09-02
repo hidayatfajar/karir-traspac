@@ -1,11 +1,23 @@
 import { useAuthStore } from '~/store';
 import { storeToRefs } from 'pinia';
 import { groupRedirects, groupPathPrefixes, defaultRedirectPath, isPublicPage, shouldSkipAuth } from '~/config/auth';
+import { isSlicingMode, logAppMode } from '~/config/app-mode';
 
 export default defineNuxtRouteMiddleware(async (to, from) => {
+  // Log app mode di client
+  if (process.client && from?.path !== to.path) {
+    logAppMode();
+  }
+
   // Skip middleware untuk Chrome DevTools dan browser requests
   if (shouldSkipAuth(to.path)) {
     console.log('Skipping auth for:', to.path);
+    return;
+  }
+
+  // SLICING MODE: Skip semua authentication
+  if (isSlicingMode()) {
+    console.log('🎨 [SLICING MODE] Auth middleware disabled for:', to.path);
     return;
   }
 

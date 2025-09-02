@@ -21,11 +21,33 @@
                 :key="link.to"
                 :label="link.label"
                 @click="$router.push(link.to)"
+                :class="[
+                  'w-full',
+                  route.path === link.to
+                    ? 'border-b-3 border-primary rounded-b-none'
+                    : '',
+                ]"
                 color="neutral"
                 variant="ghost"
                 size="lg"
               />
               <UButton
+                v-if="isAuthenticated"
+                label="Dashboard"
+                @click="$router.push('/pelamar')"
+                :class="[
+                  'w-full',
+                  route.path === '/pelamar'
+                    ? 'border-b-3 border-primary rounded-b-none'
+                    : '',
+                ]"
+                color="neutral"
+                variant="ghost"
+                size="lg"
+              />
+
+              <UButton
+                v-if="!isAuthenticated"
                 label="Login"
                 @click="$router.push('/auth/login')"
                 size="lg"
@@ -62,7 +84,7 @@
                     />
                   </div>
                   <div
-                    v-if="!store.isAuthenticated"
+                    v-if="!isAuthenticated"
                     class="flex flex-col items-center justify-center h-full gap-4"
                   >
                     <UButton
@@ -70,6 +92,12 @@
                       :key="link.to"
                       :label="link.label"
                       @click="handleMobileNavigation(link.to)"
+                      :class="[
+                        'w-fit',
+                        route.path === link.to
+                          ? 'border-b-2 border-primary rounded-b-none'
+                          : '',
+                      ]"
                       color="neutral"
                       variant="ghost"
                       size="xl"
@@ -90,7 +118,7 @@
                       block
                     />
                   </div>
-                  <div v-if="store.isAuthenticated">
+                  <div v-if="isAuthenticated">
                     <UButton
                       label="Dashboard"
                       @click="navigateToDashboard"
@@ -112,6 +140,7 @@
 
 <script setup lang="ts">
 import { useAuthStore } from "~/store";
+import { isSlicingMode } from "~/config/app-mode";
 
 const route = useRoute();
 const router = useRouter();
@@ -119,6 +148,11 @@ const store = useAuthStore();
 const fullWidth = ref(false);
 const showForm = ref(false);
 const loading = ref(false);
+
+// Dalam slicing mode, anggap semua user sebagai authenticated untuk testing UI
+const isAuthenticated = computed(() => {
+  return isSlicingMode() ? true : store.isAuthenticated;
+});
 
 const items = [
   [

@@ -12,6 +12,16 @@
         <slot />
       </UContainer>
       <FooterPublic/>
+      
+      <!-- Demo Login Panel -->
+      <ClientOnly>
+        <DemoLoginPanel />
+      </ClientOnly>
     </div>
   </div>
 </template>
+
+<script setup>
+// Import the component
+import DemoLoginPanel from '~/components/demo/DemoLoginPanel.vue';
+</script>

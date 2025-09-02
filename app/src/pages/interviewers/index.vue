@@ -1,6 +1,6 @@
 <template>
-    <div>
-        ini adalah halaman pelamar
+    <div class="h-screen flex items-center justify-center">
+        ini adalah halaman interviewer
     </div>
 </template>
 
