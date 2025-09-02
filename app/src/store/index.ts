@@ -1,4 +1,5 @@
 import type { User } from "~/server/types";
+import { isSlicingMode, isProductionMode } from "~/config/app-mode";
 
 export const useAuthStore = defineStore("auth", () => {
   const router = useRouter();
@@ -15,13 +16,23 @@ export const useAuthStore = defineStore("auth", () => {
 
   async function fetchUser() {
     try {
-      const { data, status, message } = await $fetch("/auth/me", {
-        headers: useRequestHeaders(["cookie"]) as HeadersInit,
-      });
-      if (status) {
-        user.value = data;
+      let response;
+      
+      // Use mock auth in both DEVELOPMENT and PRODUCTION mode for static demo
+      if (true) { // Always use mock for now, change to isSlicingMode() || isProductionMode() for API
+        const { mockFetchUser } = useMockAuth();
+        response = await mockFetchUser();
+      } else {
+        // Real API call (will be used later)
+        response = await $fetch("/auth/me", {
+          headers: useRequestHeaders(["cookie"]) as HeadersInit,
+        });
+      }
+      
+      if (response.status) {
+        user.value = response.data;
         console.log("User data fetched successfully:", user.value);
-        console.log("message:", message);
+        console.log("message:", response.message);
       } else {
         user.value = null;
       }
@@ -72,38 +83,64 @@ export const useAuthStore = defineStore("auth", () => {
     }
   }
 
-  async function login(payload: object) {
-    const { data, status, message } = await $fetch<{
-      data: User;
-      status: boolean;
-      message: string;
-    }>("/auth/login", {
-      method: "POST",
-      body: payload,
-    });
-    if (status) {
-      await fetchUser();
-      console.log("Login successful, user data:", user.value);
-      sessionChecked.value = true;
-    }
+  async function login(payload: { email: string; password: string }) {
+    try {
+      let response;
+      
+      // Use mock auth in both DEVELOPMENT and PRODUCTION mode for static demo
+      if (true) { // Always use mock for now
+        const { mockLogin } = useMockAuth();
+        response = await mockLogin(payload.email, payload.password);
+      } else {
+        // Real API call (will be used later)
+        response = await $fetch<{
+          data: User;
+          status: boolean;
+          message: string;
+        }>("/auth/login", {
+          method: "POST",
+          body: payload,
+        });
+      }
+      
+      if (response.status) {
+        await fetchUser();
+        console.log("Login successful, user data:", user.value);
+        sessionChecked.value = true;
+      }
 
-    return {
-      data,
-      message,
-      status,
-    };
+      return {
+        data: response.data,
+        message: response.message,
+        status: response.status,
+      };
+    } catch (error) {
+      console.error("Login error:", error);
+      return {
+        data: null,
+        message: error.message || 'Login failed',
+        status: false,
+      };
+    }
   }
 
   async function logout(options: { callApi?: boolean } = { callApi: true }) {
-    if (options.callApi) {
-      try {
-        await $fetch("/auth/logout", { method: "POST" });
-      } catch (error) {
-        console.error(
-          "Gagal menghubungi API logout, tapi sesi lokal tetap dihapus.",
-          error
-        );
+    try {
+      if (options.callApi) {
+        // Use mock auth in both DEVELOPMENT and PRODUCTION mode for static demo
+        if (true) { // Always use mock for now
+          const { mockLogout } = useMockAuth();
+          await mockLogout();
+        } else {
+          // Real API call (will be used later)
+          await $fetch("/auth/logout", { method: "POST" });
+        }
       }
+    } catch (error) {
+      console.error(
+        "Gagal menghubungi API logout, tapi sesi lokal tetap dihapus.",
+        error
+      );
     }
 
     user.value = null;
