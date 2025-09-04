@@ -1,0 +1,1 @@
+import{_ as e}from"./BCo6x5W8.js";import{j as r,f as s}from"./Cv-82GME.js";const t={class:"h-screen flex items-center justify-center"};const a=e({},[["render",function(e,a){return s(),r("div",t," ini adalah halaman interviewer ")}]]);export{a as default};

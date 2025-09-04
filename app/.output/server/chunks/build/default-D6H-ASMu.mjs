@@ -1,0 +1,70 @@
+import _ from './HeaderPublic-YRo6Jjfj.mjs';
+import { o } from './Container-mCQntVpP.mjs';
+import m from './FooterPublic-CPfiW6Oc.mjs';
+import { s as om, v as Wt, l as Qo } from './server.mjs';
+import './useLocale-BepRiSpk.mjs';
+import '../_/nitro.mjs';
+import 'crypto-es';
+import 'node:http';
+import 'node:https';
+import 'node:events';
+import 'node:buffer';
+import 'node:fs';
+import 'node:url';
+import '@iconify/utils';
+import 'node:crypto';
+import 'consola';
+import 'node:path';
+import './usePortal-DzDMWCd7.mjs';
+import './ConfigProvider-C3zU966T.mjs';
+import './useForwardPropsEmits-DnSfSOTI.mjs';
+import './DialogPortal-BClYAy6o.mjs';
+import './utils-iLtTyP0t.mjs';
+import './getActiveElement-CxMYnBFR.mjs';
+import './useBodyScrollLock-BoUAQdAA.mjs';
+import './VisuallyHidden-CudQpOEQ.mjs';
+import './Card-DDyQTkQA.mjs';
+import './logo-kt-C_l9s7Hp.mjs';
+import 'node:zlib';
+import 'node:stream';
+import 'node:util';
+import 'node:net';
+import 'util';
+import 'stream';
+import 'path';
+import 'http';
+import 'https';
+import 'url';
+import 'fs';
+import 'crypto';
+import 'assert';
+import 'tty';
+import 'node:process';
+import 'node:os';
+import 'node:tty';
+import 'zlib';
+import 'events';
+import '../routes/renderer.mjs';
+import 'vue-bundle-renderer/runtime';
+import 'vue/server-renderer';
+import 'unhead/server';
+import 'devalue';
+import 'unhead/plugins';
+import 'unhead/utils';
+import 'vue';
+import './_plugin-vue_export-helper-BCo6x5W8.mjs';
+
+const p = { __name: "default", __ssrInlineRender: true, setup: (p2) => (p3, d2, m$1, n) => {
+  const a = _, l = o, u = m, c = Qo;
+  d2(`<div${om.ssrRenderAttrs(n)}><div class="bg-[##EEF5F9] min-h-dvh">`), d2(om.ssrRenderComponent(a, null, null, m$1)), d2(om.ssrRenderComponent(l, { ui: { base: "mx-auto", padding: "sm:px-0 lg:px-0 xl:px-0 md:px-0 px-0", constrained: "max-w-7xl" } }, { default: Wt.withCtx((t2, o2, r2, i2) => {
+    if (!o2) return [Wt.renderSlot(p3.$slots, "default")];
+    om.ssrRenderSlot(p3.$slots, "default", {}, null, o2, r2, i2);
+  }), _: 3 }, m$1)), d2(om.ssrRenderComponent(u, null, null, m$1)), d2(om.ssrRenderComponent(c, null, {}, m$1)), d2("</div></div>");
+} }, d = p.setup;
+p.setup = (t2, o2) => {
+  const r2 = Wt.useSSRContext();
+  return (r2.modules || (r2.modules = /* @__PURE__ */ new Set())).add("layouts/default.vue"), d ? d(t2, o2) : void 0;
+};
+
+export { p as default };
+//# sourceMappingURL=default-D6H-ASMu.mjs.map
