@@ -1,14 +1,14 @@
-import { u as da, v as Wt, t as Ky, s as pm, P as _m } from './server.mjs';
+import { u as ua, v as Wt, t as Hy, s as om, P as xm } from './server.mjs';
 
 const u = { base: "w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8" }, o = { __name: "Container", __ssrInlineRender: true, props: { as: { type: null, required: false }, class: { type: null, required: false } }, setup(o2) {
-  const a2 = o2, l = da(), d = Wt.computed(() => {
+  const a2 = o2, l = ua(), d = Wt.computed(() => {
     var e2;
-    return Ky({ extend: Ky(u), ...(null == (e2 = l.ui) ? void 0 : e2.container) || {} });
+    return Hy({ extend: Hy(u), ...(null == (e2 = l.ui) ? void 0 : e2.container) || {} });
   });
   return (e2, t2, u2, l2) => {
-    t2(pm.ssrRenderComponent(Wt.unref(_m), Wt.mergeProps({ as: o2.as, class: d.value({ class: a2.class }) }, l2), { default: Wt.withCtx((t3, r2, u3, o3) => {
+    t2(om.ssrRenderComponent(Wt.unref(xm), Wt.mergeProps({ as: o2.as, class: d.value({ class: a2.class }) }, l2), { default: Wt.withCtx((t3, r2, u3, o3) => {
       if (!r2) return [Wt.renderSlot(e2.$slots, "default")];
-      pm.ssrRenderSlot(e2.$slots, "default", {}, null, r2, u3, o3);
+      om.ssrRenderSlot(e2.$slots, "default", {}, null, r2, u3, o3);
     }), _: 3 }, u2));
   };
 } }, a = o.setup;

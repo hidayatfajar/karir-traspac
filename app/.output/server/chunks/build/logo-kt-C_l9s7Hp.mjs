@@ -1,4 +1,4 @@
-import { m as buildAssetsURL } from '../_/nitro.mjs';
+import { k as buildAssetsURL } from '../_/nitro.mjs';
 
 const s = "" + buildAssetsURL("logo-kt.CP3xJNYM.png");
 

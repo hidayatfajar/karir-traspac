@@ -1,4 +1,4 @@
-import { s as pm, v as Wt } from './server.mjs';
+import { s as om, v as Wt } from './server.mjs';
 import { o } from './_plugin-vue_export-helper-BCo6x5W8.mjs';
 import 'node:http';
 import 'node:https';
@@ -16,7 +16,6 @@ import 'node:events';
 import '@iconify/utils';
 import 'node:crypto';
 import 'consola';
-import 'node:module';
 import 'util';
 import 'stream';
 import 'path';
@@ -48,7 +47,7 @@ e.setup = (t2, o2) => {
   return (e2.modules || (e2.modules = /* @__PURE__ */ new Set())).add("pages/pelamar/index.vue"), p ? p(t2, o2) : void 0;
 };
 const i = o(e, [["ssrRender", function(r2, o2, e2, p2) {
-  o2(`<div${pm.ssrRenderAttrs(p2)}> ini adalah halaman pelamar </div>`);
+  o2(`<div${om.ssrRenderAttrs(p2)}> ini adalah halaman pelamar </div>`);
 }]]);
 
 export { i as default };

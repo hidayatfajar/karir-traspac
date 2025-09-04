@@ -1,6 +1,6 @@
 import { Server as Server$1 } from 'node:http';
 import { Server } from 'node:https';
-import { S as toNodeListener, H as destr, u as useRuntimeConfig, T as trapUnhandledNodeErrors, U as setupGracefulShutdown, P as useNitroApp } from '../../_/nitro.mjs';
+import { R as toNodeListener, G as destr, u as useRuntimeConfig, S as trapUnhandledNodeErrors, T as setupGracefulShutdown, O as useNitroApp } from '../../_/nitro.mjs';
 
 const cert = process.env.NITRO_SSL_CERT;
 const key = process.env.NITRO_SSL_KEY;

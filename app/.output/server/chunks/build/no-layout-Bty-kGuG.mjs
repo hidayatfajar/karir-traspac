@@ -1,4 +1,4 @@
-import { s as pm, v as Wt } from './server.mjs';
+import { s as om, v as Wt } from './server.mjs';
 import { o } from './_plugin-vue_export-helper-BCo6x5W8.mjs';
 import 'node:http';
 import 'node:https';
@@ -16,7 +16,6 @@ import 'node:events';
 import '@iconify/utils';
 import 'node:crypto';
 import 'consola';
-import 'node:module';
 import 'util';
 import 'stream';
 import 'path';
@@ -48,7 +47,7 @@ e.setup = (t2, r2) => {
   return (e2.modules || (e2.modules = /* @__PURE__ */ new Set())).add("layouts/no-layout.vue"), p ? p(t2, r2) : void 0;
 };
 const s = o(e, [["ssrRender", function(r2, e2, p2, s2) {
-  e2(`<div${pm.ssrRenderAttrs(Wt.mergeProps({ class: "" }, s2))}>`), pm.ssrRenderSlot(r2.$slots, "default", {}, null, e2, p2), e2("</div>");
+  e2(`<div${om.ssrRenderAttrs(Wt.mergeProps({ class: "" }, s2))}>`), om.ssrRenderSlot(r2.$slots, "default", {}, null, e2, p2), e2("</div>");
 }]]);
 
 export { s as default };

@@ -1,1 +1,0 @@
-import{_ as s}from"./BCo6x5W8.js";import{j as t,f as o,m as r}from"./BUKko-Vg.js";const a={class:""};const e=s({},[["render",function(s,e){return o(),t("div",a,[r(s.$slots,"default")])}]]);export{e as default};
